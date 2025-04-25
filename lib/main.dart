@@ -1,20 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:onlineshop/view/home.dart';
+import 'package:onlineshop/view/bottom.dart';
 
 
 void main() {
-  runApp(MyApp());
-
+  runApp(const ECommerceApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class ECommerceApp extends StatelessWidget {
+  const ECommerceApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: 'E-Commerce App',
       debugShowCheckedModeBanner: false,
-      home: ECommerceApp(),
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Colors.indigo,
+          primary: Colors.indigo,
+          background: Colors.white,
+        ),
+        useMaterial3: true,
+        fontFamily: 'Poppins',
+      ),
+      home: const BottomScreen(),
     );
   }
 }
