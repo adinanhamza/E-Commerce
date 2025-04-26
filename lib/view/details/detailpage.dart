@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ProductDetailsPage extends StatefulWidget {
-  final Map<String,dynamic> product;
+  final Map<String, dynamic> product;
 
   const ProductDetailsPage({
     super.key,
@@ -59,7 +59,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                         width: double.infinity,
                         color: Colors.grey[100],
                         child: Hero(
-                          tag: 'product-${widget.product}',
+                          tag: 'product-${widget.product['id']}',
                           child: Icon(
                             widget.product['icon'] ?? Icons.watch,
                             size: 150,

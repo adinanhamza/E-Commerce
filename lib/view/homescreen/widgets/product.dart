@@ -11,6 +11,8 @@ class ProductGrid extends StatelessWidget {
   Widget build(BuildContext context) {
     return GridView.builder(
   itemCount: demoProducts.length,
+  physics: NeverScrollableScrollPhysics(),
+  shrinkWrap: true,
   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
     crossAxisCount: 2,
     childAspectRatio: 0.75,
@@ -22,7 +24,7 @@ class ProductGrid extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => ProductDetailsPage(product: product),
+            builder: (context) => ProductDetailsPage(product: detailproduct,),
           ),
         );
       },
@@ -200,7 +202,18 @@ class Product {
     this.isFavorite = false,
   });
 }
-
+ final detailproduct = {
+      'id': 'apple-watch-series-10',
+      'name': 'Apple Watch Series 10',
+      'price': 379.99,
+      'originalPrice': 419.99,
+      'discount': 10,
+      'icon': Icons.watch,
+      'rating': 4.9,
+      'reviews': 263,
+      'description': 'Series 10 is a major milestone for Apple Watch. It features our biggest and most advanced display yet. It delivers more information onscreen than ever before. The battery lasts longer than previous generations, and it has enhanced fitness tracking capabilities.',
+      'category': 'Electronics',
+    };
 // Demo products data
 final List<Product> demoProducts = [
   Product(
