@@ -1,76 +1,106 @@
 import 'package:flutter/material.dart';
+import 'package:onlineshop/view/profile.dart';
 
 
 // Home Screen with categories and promotion banner
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+   HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Home'),
+        title:  Text('Home'),
         actions: [
           IconButton(
-            icon: const Icon(Icons.notifications_outlined),
+            icon:  Icon(Icons.notifications_outlined),
             onPressed: () {},
           ),
           IconButton(
-            icon: const Icon(Icons.shopping_cart_outlined),
+            icon:  Icon(Icons.shopping_cart_outlined),
             onPressed: () {},
           ),
         ],
       ),
       body: SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Padding(
-
-              padding: EdgeInsets.all(16.0),
-              child: DeliveryAddressWidget(),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              child: TextField(
-                decoration: InputDecoration(
-                  hintText: 'Search products...',
-                  prefixIcon: const Icon(Icons.search),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12),
-                    borderSide: BorderSide.none,
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+               Padding(
+          
+                padding: EdgeInsets.all(16.0),
+                child: DeliveryAddressWidget(),
+              ),
+              Padding(
+                padding:  EdgeInsets.symmetric(horizontal: 16.0),
+                child: TextField(
+                  decoration: InputDecoration(
+                    hintText: 'Search products...',
+                    prefixIcon:  Icon(Icons.search),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12),
+                      borderSide: BorderSide.none,
+                    ),
+                    filled: true,
+                    fillColor: Colors.grey[200],
                   ),
-                  filled: true,
-                  fillColor: Colors.grey[200],
                 ),
               ),
-            ),
-            const SizedBox(height: 20),
-            const PromotionBanner(),
-            const SizedBox(height: 20),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Text(
-                    'Categories',
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
+               SizedBox(height: 20),
+               PromotionBanner(),
+               SizedBox(height: 20),
+              Padding(
+                padding:  EdgeInsets.symmetric(horizontal: 16.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                     Text(
+                      'Categories',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
-                  ),
-                  TextButton(
-                    onPressed: () {},
-                    child: const Text('See all'),
-                  ),
-                ],
+                    TextButton(
+                      onPressed: () {},
+                      child:  Text('See all'),
+                    ),
+                  ],
+                ),
               ),
-            ),
-            const SizedBox(height: 10),
-            const CategoryList(),
-            const SizedBox(height: 20,)
-          ],
+               SizedBox(height: 10),
+               CategoryList(),
+               SizedBox(height: 20,),
+               
+// Add this to your HomeScreen widget's Column children after the CategoryList
+ SizedBox(height: 24),
+Padding(
+  padding:  EdgeInsets.symmetric(horizontal: 16.0),
+  child: Row(
+    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    children: [
+      Text(
+        'Featured Products',
+        style: TextStyle(
+          fontSize: 18,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+      TextButton(
+        onPressed: () {},
+        child: Text('See all'),
+      ),
+    ],
+  ),
+),
+ SizedBox(height: 10),
+ Expanded(
+  child: ProductGrid(),
+),
+
+            ],
+          ),
         ),
       ),
     );
@@ -78,15 +108,15 @@ class HomeScreen extends StatelessWidget {
 }
 
 class DeliveryAddressWidget extends StatelessWidget {
-  const DeliveryAddressWidget({super.key});
+   DeliveryAddressWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
-        const Icon(Icons.location_on_outlined),
-        const SizedBox(width: 8),
-        const Column(
+         Icon(Icons.location_on_outlined),
+         SizedBox(),
+         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text('Delivery address'),
@@ -101,13 +131,13 @@ class DeliveryAddressWidget extends StatelessWidget {
             ),
           ],
         ),
-        const Spacer(),
+         Spacer(),
         Stack(
           alignment: Alignment.topRight,
           children: [
             IconButton(
               onPressed: () {},
-              icon: const Icon(Icons.notifications_outlined),
+              icon:  Icon(Icons.notifications_outlined),
             ),
             Positioned(
               top: 8,
@@ -115,7 +145,7 @@ class DeliveryAddressWidget extends StatelessWidget {
               child: Container(
                 width: 8,
                 height: 8,
-                decoration: const BoxDecoration(
+                decoration:  BoxDecoration(
                   color: Colors.red,
                   shape: BoxShape.circle,
                 ),
@@ -129,13 +159,13 @@ class DeliveryAddressWidget extends StatelessWidget {
 }
 
 class PromotionBanner extends StatelessWidget {
-  const PromotionBanner({super.key});
+   PromotionBanner({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 16),
-      padding: const EdgeInsets.all(16),
+      margin:  EdgeInsets.symmetric(horizontal: 16),
+      padding:  EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: Colors.black87,
         borderRadius: BorderRadius.circular(12),
@@ -146,7 +176,7 @@ class PromotionBanner extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
+                 Text(
                   'Fashion sale up to 25% off!',
                   style: TextStyle(
                     color: Colors.white,
@@ -154,12 +184,12 @@ class PromotionBanner extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                const SizedBox(height: 8),
-                const Text(
+           SizedBox(height: 8),
+                 Text(
                   'Get a special offer from our featured fashion products starts today',
                   style: TextStyle(color: Colors.white70),
                 ),
-                const SizedBox(height: 12),
+                 SizedBox(height: 12),
                 ElevatedButton(
                   onPressed: () {},
                   style: ElevatedButton.styleFrom(
@@ -169,7 +199,7 @@ class PromotionBanner extends StatelessWidget {
                       borderRadius: BorderRadius.circular(20),
                     ),
                   ),
-                  child: const Text('Shop now'),
+                  child:  Text('Shop now'),
                 ),
               ],
             ),
@@ -182,7 +212,7 @@ class PromotionBanner extends StatelessWidget {
               width: 100,
               height: 100,
               color: Colors.grey[300],
-              child: const Icon(Icons.person),
+              child:  Icon(Icons.person),
             ),
           ),
         ],
@@ -192,7 +222,7 @@ class PromotionBanner extends StatelessWidget {
 }
 
 class CategoryList extends StatelessWidget {
-  const CategoryList({super.key});
+   CategoryList({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -207,16 +237,16 @@ class CategoryList extends StatelessWidget {
       height: 80,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
-        padding: const EdgeInsets.symmetric(horizontal: 16),
+        padding:  EdgeInsets.symmetric(horizontal: 16),
         itemCount: categories.length,
         itemBuilder: (context, index) {
           final isFirst = index == 0;
           return Container(
-            margin: const EdgeInsets.only(right: 12),
+            margin:  EdgeInsets.only(right: 12),
             child: Column(
               children: [
                 Container(
-                  padding: const EdgeInsets.all(16),
+                  padding:  EdgeInsets.all(16),
                   decoration: BoxDecoration(
                     color: isFirst ? Colors.black : Colors.grey[200],
                     borderRadius: BorderRadius.circular(12),
@@ -226,7 +256,7 @@ class CategoryList extends StatelessWidget {
                     color: isFirst ? Colors.white : Colors.black,
                   ),
                 ),
-                const SizedBox(height: 4),
+                 SizedBox(height: 4),
                 Text(categories[index]['name'] as String),
               ],
             ),
@@ -238,3 +268,270 @@ class CategoryList extends StatelessWidget {
 }
 
 
+
+
+
+
+// Then add these new widgets after your CategoryList class
+
+class ProductGrid extends StatelessWidget {
+   ProductGrid({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return GridView.builder(
+      padding:  EdgeInsets.all(16),
+      gridDelegate:  SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+        childAspectRatio: 0.75,
+        crossAxisSpacing: 16,
+        mainAxisSpacing: 16,
+      ),
+      itemCount: demoProducts.length,
+      itemBuilder: (context, index) {
+        return ProductCard(product: demoProducts[index]);
+      },
+    );
+  }
+}
+
+class ProductCard extends StatelessWidget {
+  final Product product;
+
+   ProductCard({super.key, required this.product});
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => ProfileScreen(),
+          ),
+        );
+      },
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(12),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.1),
+              spreadRadius: 1,
+              blurRadius: 5,
+              offset:  Offset(0, 2),
+            ),
+          ],
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Stack(
+              children: [
+                Container(
+                  height: 140,
+                  decoration: BoxDecoration(
+                    color: Colors.grey[100],
+                    borderRadius:  BorderRadius.only(
+                      topLeft: Radius.circular(12),
+                      topRight: Radius.circular(12),
+                    ),
+                  ),
+                  child: Center(
+                    child: Icon(
+                      product.icon,
+                      size: 60,
+                      color: Colors.grey[400],
+                    ),
+                  ),
+                ),
+                if (product.discountPercentage > 0)
+                  Positioned(
+                    top: 8,
+                    right: 8,
+                    child: Container(
+                      padding:  EdgeInsets.symmetric(
+                        horizontal: 8,
+                        vertical: 4,
+                      ),
+                      decoration: BoxDecoration(
+                        color: Colors.pink[100],
+                        borderRadius: BorderRadius.circular(4),
+                      ),
+                      child: Text(
+                        '${product.discountPercentage}% off',
+                        style:  TextStyle(
+                          color: Colors.pink,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 10,
+                        ),
+                      ),
+                    ),
+                  ),
+                Positioned(
+                  bottom: 8,
+                  right: 8,
+                  child: Container(
+                    padding:  EdgeInsets.all(4),
+                    decoration:  BoxDecoration(
+                      color: Colors.white,
+                      shape: BoxShape.circle,
+                    ),
+                    child: Icon(
+                      product.isFavorite
+                          ? Icons.bookmark
+                          : Icons.bookmark_outline,
+                      size: 18,
+                      color: product.isFavorite ? Colors.pink : Colors.grey,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            Padding(
+              padding:  EdgeInsets.all(10),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    product.name,
+                    style:  TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 14,
+                    ),
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                   SizedBox(height: 4),
+                  Row(
+                    children: [
+                       Icon(Icons.star, color: Colors.amber, size: 14),
+                      Text(
+                        ' ${product.rating}',
+                        style:  TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 12,
+                        ),
+                      ),
+                      Text(
+                        ' (${product.reviewCount})',
+                        style: TextStyle(
+                          color: Colors.grey[600],
+                          fontSize: 12,
+                        ),
+                      ),
+                    ],
+                  ),
+                   SizedBox(height: 4),
+                  Row(
+                    children: [
+                      Text(
+                        '\$${product.currentPrice.toStringAsFixed(2)}',
+                        style:  TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 14,
+                        ),
+                      ),
+                       SizedBox(width: 4),
+                      if (product.originalPrice > product.currentPrice)
+                        Text(
+                          '\$${product.originalPrice.toStringAsFixed(2)}',
+                          style: TextStyle(
+                            color: Colors.grey[500],
+                            decoration: TextDecoration.lineThrough,
+                            fontSize: 12,
+                          ),
+                        ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class Product {
+  final String name;
+  final double currentPrice;
+  final double originalPrice;
+  final int discountPercentage;
+  final double rating;
+  final int reviewCount;
+  final IconData icon;
+  final bool isFavorite;
+
+   Product({
+    required this.name,
+    required this.currentPrice,
+    required this.originalPrice,
+    this.discountPercentage = 0,
+    required this.rating,
+    required this.reviewCount,
+    required this.icon,
+    this.isFavorite = false,
+  });
+}
+
+// Demo products data
+final List<Product> demoProducts = [
+  Product(
+    name: 'Apple Watch Series 10',
+    currentPrice: 379.99,
+    originalPrice: 429.99,
+    discountPercentage: 10,
+    rating: 4.9,
+    reviewCount: 263,
+    icon: Icons.watch,
+    isFavorite: true,
+  ),
+  Product(
+    name: 'Wireless Headphones',
+    currentPrice: 129.99,
+    originalPrice: 149.99,
+    discountPercentage: 15,
+    rating: 4.7,
+    reviewCount: 182,
+    icon: Icons.headphones,
+  ),
+  Product(
+    name: 'iPhone 16 Pro Max',
+    currentPrice: 1099.99,
+    originalPrice: 1099.99,
+    rating: 4.8,
+    reviewCount: 421,
+    icon: Icons.phone_iphone,
+    isFavorite: true,
+  ),
+  Product(
+    name: 'MacBook Air M3',
+    currentPrice: 999.99,
+    originalPrice: 1199.99,
+    discountPercentage: 20,
+    rating: 4.9,
+    reviewCount: 345,
+    icon: Icons.laptop_mac,
+  ),
+  Product(
+    name: 'Wireless Charging Pad',
+    currentPrice: 39.99,
+    originalPrice: 49.99,
+    discountPercentage: 20,
+    rating: 4.5,
+    reviewCount: 128,
+    icon: Icons.charging_station,
+  ),
+  Product(
+    name: 'Smart Home Speaker',
+    currentPrice: 89.99,
+    originalPrice: 99.99,
+    discountPercentage: 10,
+    rating: 4.6,
+    reviewCount: 201,
+    icon: Icons.speaker,
+  ),
+];
