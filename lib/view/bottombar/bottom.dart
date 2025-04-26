@@ -1,10 +1,10 @@
 
 
 import 'package:flutter/material.dart';
-import 'package:onlineshop/view/cart.dart';
+import 'package:onlineshop/view/cart/cart.dart';
 import 'package:onlineshop/view/homescreen/home.dart';
-import 'package:onlineshop/view/order.dart';
-import 'package:onlineshop/view/profile.dart';
+import 'package:onlineshop/view/orders/order.dart';
+import 'package:onlineshop/view/profile/profile.dart';
 
 class BottomScreen extends StatefulWidget {
   const BottomScreen({super.key});
