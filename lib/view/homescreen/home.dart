@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:onlineshop/view/homescreen/homewidget.dart';
-import 'package:onlineshop/view/homescreen/product.dart';
-import 'package:onlineshop/view/profile.dart';
+import 'package:onlineshop/view/homescreen/widgets/banner.dart';
+import 'package:onlineshop/view/homescreen/widgets/category.dart';
+import 'package:onlineshop/view/homescreen/widgets/deliveryadrs.dart';
+import 'package:onlineshop/view/homescreen/widgets/product.dart';
+
 
 
 // Home Screen with categories and promotion banner
