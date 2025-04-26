@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:onlineshop/view/cart.dart';
-import 'package:onlineshop/view/home.dart';
+import 'package:onlineshop/view/homescreen/home.dart';
 import 'package:onlineshop/view/order.dart';
 import 'package:onlineshop/view/profile.dart';
 
@@ -17,7 +17,7 @@ class _BottomScreenState extends State<BottomScreen> {
   int _selectedIndex = 0;
   
   final List<Widget> _screens = [
-    const HomeScreen(),
+   HomeScreen(),
     const OrdersScreen(),
     const CartScreen(),
     const ProfileScreen(),
