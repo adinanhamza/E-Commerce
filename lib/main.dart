@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:onlineshop/view/bottom.dart';
+import 'package:onlineshop/view/bottombar/bottom.dart';
 
 
 void main() {

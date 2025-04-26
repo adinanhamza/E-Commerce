@@ -71,11 +71,7 @@ class ProductCard extends StatelessWidget {
                     ),
                   ),
                   child: Center(
-                    child: Icon(
-                      product.icon,
-                      size: 60,
-                      color: Colors.grey[400],
-                    ),
+                    child: Image.network(product.networkImage,fit: BoxFit.cover,)
                   ),
                 ),
                 if (product.discountPercentage > 0)
@@ -194,7 +190,7 @@ class Product {
   final int discountPercentage;
   final double rating;
   final int reviewCount;
-  final IconData icon;
+  final String networkImage;
   final bool isFavorite;
 
    Product({
@@ -204,7 +200,7 @@ class Product {
     this.discountPercentage = 0,
     required this.rating,
     required this.reviewCount,
-    required this.icon,
+    required this.networkImage,
     this.isFavorite = false,
   });
 }
@@ -218,7 +214,7 @@ final List<Product> demoProducts = [
     discountPercentage: 10,
     rating: 4.9,
     reviewCount: 263,
-    icon: Icons.watch,
+    networkImage: 'https://avatars.mds.yandex.net/get-mpic/13287540/2a00000193ba19b6b33c63affbdf12af8092/orig',
     isFavorite: true,
   ),
   Product(
@@ -228,7 +224,7 @@ final List<Product> demoProducts = [
     discountPercentage: 15,
     rating: 4.7,
     reviewCount: 182,
-    icon: Icons.headphones,
+  networkImage: 'https://bsmedia.business-standard.com/_media/bs/img/article/2023-01/11/full/1673428228-5342.jpg',
   ),
   Product(
     name: 'iPhone 16 Pro Max',
@@ -236,7 +232,7 @@ final List<Product> demoProducts = [
     originalPrice: 1099.99,
     rating: 4.8,
     reviewCount: 421,
-    icon: Icons.phone_iphone,
+    networkImage: 'https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1725960314/Croma%20Assets/Communication/Mobiles/Images/309754_0_uo2lta.png',
     isFavorite: true,
   ),
   Product(
@@ -246,7 +242,7 @@ final List<Product> demoProducts = [
     discountPercentage: 20,
     rating: 4.9,
     reviewCount: 345,
-    icon: Icons.laptop_mac,
+    networkImage:'https://www.mac-paradise.com/img/1100000273677.jpg',
   ),
   Product(
     name: 'Wireless Charging Pad',
@@ -255,7 +251,7 @@ final List<Product> demoProducts = [
     discountPercentage: 20,
     rating: 4.5,
     reviewCount: 128,
-    icon: Icons.charging_station,
+    networkImage: 'https://thingsidesire.com/wp-content/uploads/2018/06/Samsung-Qi-Wireless-Charger-Pad1.jpg'
   ),
   Product(
     name: 'Smart Home Speaker',
@@ -264,6 +260,6 @@ final List<Product> demoProducts = [
     discountPercentage: 10,
     rating: 4.6,
     reviewCount: 201,
-    icon: Icons.speaker,
+    networkImage: 'https://th.bing.com/th/id/OIP.b5FG5Ajpk7GGcRhRb5FS3gHaFj?w=1200&h=900&rs=1&pid=ImgDetMain',
   ),
 ];
