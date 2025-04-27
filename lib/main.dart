@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:onlineshop/view/bottombar/bottom.dart';
-import 'package:onlineshop/view/homescreen/home.dart';
+
 
 
 void main() {

@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:onlineshop/view/homescreen/widgets/banner.dart';
 import 'package:onlineshop/view/homescreen/widgets/category.dart';
 import 'package:onlineshop/view/homescreen/widgets/deliveryadrs.dart';
+import 'package:onlineshop/view/homescreen/widgets/offer.dart';
+import 'package:onlineshop/view/homescreen/widgets/popular.dart';
 import 'package:onlineshop/view/homescreen/widgets/product.dart';
+import 'package:onlineshop/view/homescreen/widgets/recommended.dart';
 
 
 
@@ -100,7 +103,13 @@ Padding(
 ),
  SizedBox(height: 10),
  ProductGrid(),
-
+ SizedBox(height: 20),
+ SpecialOffersWidget(),
+  SizedBox(height: 20),
+  PopularBrandsWidget(),
+SizedBox(height: 20),
+RecommendedProductsWidget(),
+SizedBox(height: 20),
             ],
           ),
         ),
