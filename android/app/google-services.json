@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "426988229556",
+    "project_id": "e-commerce-adinan",
+    "storage_bucket": "e-commerce-adinan.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:426988229556:android:47001b1536dadafcef98e1",
+        "android_client_info": {
+          "package_name": "com.example.rental_cars"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCM4rQu0J41xplIW48uR2-59m_fPdHVZIQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
