@@ -1,12 +1,16 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:onlineshop/firebase_options.dart';
+import 'package:onlineshop/view/homescreen/home.dart';
 import 'package:onlineshop/view/login&signup/login.dart';
 
 
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+
   runApp(const ECommerceApp());
 }
 
@@ -27,7 +31,7 @@ class ECommerceApp extends StatelessWidget {
         useMaterial3: true,
         fontFamily: 'Poppins',
       ),
-      home:AuthScreen());
+      home:HomeScreen());
   
   }
 }

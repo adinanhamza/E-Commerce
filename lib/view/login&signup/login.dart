@@ -38,8 +38,8 @@ class _AuthScreenState extends State<AuthScreen> {
                 tag: 'appLogo',
                 child: const CircleAvatar(
                   radius: 50,
-                  backgroundImage: NetworkImage(
-                    'https://i.pinimg.com/originals/df/70/fc/df70fc7f957c5811ff783ad0efdd4966.jpg',
+                  backgroundImage: AssetImage(
+                    'assets/applogo.jpg',
                   ),
                 ),
               ),
