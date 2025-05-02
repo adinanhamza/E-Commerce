@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ProductModel {
+  final String? id;
   final String name;
   final double currentPrice;
   final double originalPrice;
@@ -14,13 +15,15 @@ class ProductModel {
     required this.currentPrice,
     required this.originalPrice,
     required this.discountPercentage,
-    required this.rating,
+    required this.rating, 
     required this.reviewCount,
     required this.networkImage,
+    this.id
   });
   
-factory ProductModel.fromDataBase(Map<String, dynamic> json) {
+factory ProductModel.fromDataBase(Map<String, dynamic> json,String id) {
   return ProductModel(
+    id: json['id'],
     name: json['name'] ?? '',
     currentPrice: (json['currentPrice'] ?? 0).toDouble(),
     originalPrice: (json['originalPrice'] ?? 0).toDouble(),
