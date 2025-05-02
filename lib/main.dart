@@ -1,8 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:onlineshop/firebase_options.dart';
-import 'package:onlineshop/view/addpage.dart';
-import 'package:onlineshop/view/bottombar/bottom.dart';
+import 'package:onlineshop/view/homescreen/home.dart';
 
 
 
@@ -33,7 +32,7 @@ class ECommerceApp extends StatelessWidget {
         useMaterial3: true,
         fontFamily: 'Poppins',
       ),
-      home: Addpage(),
+      home: HomeScreen(),
     );
   }
 }
