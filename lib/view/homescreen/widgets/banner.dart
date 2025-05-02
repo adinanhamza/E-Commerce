@@ -48,9 +48,11 @@ class PromotionBanner extends StatelessWidget {
             ),
           ),
           Image.asset(
-            'assets/images/fashion_model.png' ,
+            'assets/home-banner.jpeg' ,
             width: 100,
             height: 100,
+            fit: BoxFit.contain,
+
             errorBuilder: (context, error, stackTrace) => Container(
               width: 100,
               height: 100,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:onlineshop/view/bottombar/bottom.dart';
 import 'package:onlineshop/view/login&signup/signup.dart';
 
 class AuthScreen extends StatefulWidget {
@@ -9,17 +10,8 @@ class AuthScreen extends StatefulWidget {
 }
 
 class _AuthScreenState extends State<AuthScreen> {
-  bool _isLoading = false;
+ final bool _isLoading = false;
 
-  void _simulateLogin() async {
-    setState(() {
-      _isLoading = true;
-    });
-    await Future.delayed(const Duration(seconds: 2));
-    setState(() {
-      _isLoading = false;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -65,7 +57,7 @@ class _AuthScreenState extends State<AuthScreen> {
               const SizedBox(height: 40),
 
               ElevatedButton.icon(
-                onPressed: _simulateLogin,
+                onPressed:(){Navigator.push(context, MaterialPageRoute(builder: (context)=> BottomScreen()));},
                 icon: Image.network(
                   'https://th.bing.com/th/id/OIP.Kg2FF2wpIK_HLyo8Q56ycAHaFj?rs=1&pid=ImgDetMain',
                   height: 24,
@@ -125,7 +117,7 @@ class _AuthScreenState extends State<AuthScreen> {
               const SizedBox(height: 20),
 
               ElevatedButton(
-                onPressed: _simulateLogin,
+                onPressed: (){},
                 child: _isLoading
                     ? const SizedBox(
                         width: 24,

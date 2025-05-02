@@ -1,5 +1,6 @@
-// Popular Brands Widget with Images
 import 'package:flutter/material.dart';
+
+// Popular Brands Widget with Images
 
 class PopularBrandsWidget extends StatelessWidget {
   final List<Map<String, dynamic>> brands = [
@@ -87,10 +88,6 @@ Image.network(
   height: 60,
   width: 60,
   fit: BoxFit.contain,
-  loadingBuilder: (context, child, loadingProgress) {
-    if (loadingProgress == null) return child;
-    return Center(child: CircularProgressIndicator());
-  },
   errorBuilder: (context, error, stackTrace) {
     return Center(
       child: Icon(Icons.image_not_supported, size: 30, color: Colors.grey),

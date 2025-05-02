@@ -522,7 +522,3 @@ class ProductDetailExample extends StatelessWidget {
   }
 }
 
-// Entry point for testing the product details page in isolation
-void main() {
-  runApp(const ProductDetailExample());
-}

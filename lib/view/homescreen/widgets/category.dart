@@ -8,35 +8,35 @@ class CategoryList extends StatelessWidget {
     final categories = [
       {
         'name': 'All',
-        'image': 'https://www.macworld.com/wp-content/uploads/2021/03/apple-products-2018-100782368-orig-1.jpg?resize=2048,1366&quality=50&strip=all',
+        'image': 'assets/cat-all.webp',
       },
       {
         'name': 'Fashion',
-        'image': 'https://img.freepik.com/free-photo/smiling-attractive-woman-stylish-colorful-outfit-jumping-with-shopping-bags-pink-yellow-background-polo-neck-striped-mini-skirt-shopaholic-sale-fashion-summer-trend_285396-2421.jpg',
+        'image': 'assets/cat-fashion.jpg',
       },
       {
         'name': 'Phones',
-        'image': 'https://i.cdn.newsbytesapp.com/images/l55920230926191935.png',
+        'image': 'assets/cat-phones.webp',
       },
       {
         'name': 'Laptops',
-        'image': 'https://th.bing.com/th/id/R.3d06291b74f917da6cca8676b94c2f67?rik=dr%2fxyTPkQl%2bShw&riu=http%3a%2f%2fcdn.mos.cms.futurecdn.net%2fXRA9zN22EKkhUYrqtwXkBZ.jpg&ehk=HS%2bifYXUxcbXYlTLdegecjAK%2bWD1WGnij1LFjEbaoLM%3d&risl=&pid=ImgRaw&r=0',
+        'image': 'assets/cat-laps.jpg',
       },
       {
         'name': 'Electronics',
-        'image': 'https://media.istockphoto.com/id/1174598609/photo/set-of-contemporary-house-appliances-isolated-on-white.jpg?b=1&s=170667a&w=0&k=20&c=7DjQBuaZPG22Gv2Ej3A7RpBTJOq_E8vkslptetZHB-w=',
+        'image': 'assets/cat-electro2.jpeg',
       },
       {
         'name': 'Beauty',
-        'image': 'https://cdn2.stylecraze.com/wp-content/uploads/2017/08/Oriflame-Beauty-And-Skin-Care-Products-Top-15.jpg',
+        'image': 'assets/cat-buety.jpg',
       },
       {
         'name': 'Home',
-        'image': 'https://img.freepik.com/premium-photo/household-kitchen-appliances-table-kitchen_392895-507433.jpg',
+        'image': 'assets/cat-home.jpeg',
       },
       {
         'name': 'Sports',
-        'image': 'https://as1.ftcdn.net/v2/jpg/02/57/49/32/1000_F_257493248_exlhRge9HrHPAUu2d8vRGEWAaqXmTotx.jpg',
+        'image': 'assets/cat-sport.jpg',
       },
     ];
 
@@ -64,7 +64,7 @@ class CategoryList extends StatelessWidget {
                         : null,
                   ),
                   clipBehavior: Clip.hardEdge,
-                  child: Image.network(
+                  child: Image.asset(
                     categories[index]['image'] as String,
                     fit: BoxFit.cover,
                   ),

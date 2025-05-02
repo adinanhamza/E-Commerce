@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 class ProductModel {
   final String name;
   final double currentPrice;
@@ -17,7 +19,7 @@ class ProductModel {
     required this.networkImage,
   });
   
-foromDataBase(Map<String, dynamic> json) {
+factory ProductModel.fromDataBase(Map<String, dynamic> json) {
   return ProductModel(
     name: json['name'] ?? '',
     currentPrice: (json['currentPrice'] ?? 0).toDouble(),
