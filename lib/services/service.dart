@@ -1,15 +1,14 @@
 import 'dart:developer';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:onlineshop/model/model.dart';
 
-class shoppingService{
+class ShoppingService{
   final CollectionReference firebaseData = FirebaseFirestore.instance.collection('products');
 
   Future<List<ProductModel>>getAllProducts()async{
    try {
       final QuerySnapshot snapshot =await firebaseData.get();
-    log('product data get successfully${snapshot.toString()}');
+    log('product data get successfully');
     return snapshot.docs.map((doc)=> ProductModel.fromDataBase(doc.data() as Map<String,dynamic>,doc.id)).toList();
 
    }on FirebaseException catch (e) {

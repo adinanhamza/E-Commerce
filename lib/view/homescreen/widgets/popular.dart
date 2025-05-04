@@ -6,27 +6,27 @@ class PopularBrandsWidget extends StatelessWidget {
   final List<Map<String, dynamic>> brands = [
     {
       'name': 'Nike', 
-      'logo': 'assets/images/brands/nike.png',
+      'logo': 'assets/brands/brand-nike.png',
       'color': Colors.white
     },
     {
       'name': 'Adidas', 
-      'logo': 'assets/images/brands/adidas.png',
+      'logo': 'assets/brands/brand-adidas.png',
       'color': Colors.white
     },
     {
       'name': 'Puma', 
-      'logo': 'assets/images/brands/puma.png',
+      'logo': 'assets/brands/brand-puma-4.png',
       'color': Colors.white
     },
     {
       'name': 'Apple', 
-      'logo': 'assets/images/brands/apple.png',
+      'logo': 'assets/brands/brand-apple-4.png',
       'color': Colors.white
     },
     {
       'name': 'Samsung', 
-      'logo': 'assets/images/brands/samsung.png',
+      'logo': 'assets/brands/brand-samsung-5.webp',
       'color': Colors.white
     },
   ];
@@ -83,8 +83,8 @@ class PopularBrandsWidget extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     // For network images:
-Image.network(
-  'https://via.placeholder.com/60?text=${brands[index]['name']}',
+Image.asset(
+  brands[index]['logo'],
   height: 60,
   width: 60,
   fit: BoxFit.contain,
@@ -94,6 +94,7 @@ Image.network(
     );
   },
 ),
+
                     SizedBox(height: 5),
                     Text(
                       brands[index]['name'],

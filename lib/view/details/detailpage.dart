@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:onlineshop/model/model.dart';
 
 class ProductDetailsPage extends StatefulWidget {
-  final Map<String, dynamic> product;
+  final ProductModel product;
 
   const ProductDetailsPage({
     super.key,
@@ -59,15 +60,13 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                         width: double.infinity,
                         color: Colors.grey[100],
                         child: Hero(
-                          tag: 'product-${widget.product['id']}',
-                          child: Icon(
-                            widget.product['icon'] ?? Icons.watch,
-                            size: 150,
-                            color: colors[_selectedColorIndex]['color'],
+                          tag: 'product-${widget.product.id}',
+                          child: Image.network(
+                          widget.product.networkImage
                           ),
                         ),
                       ),
-                      if ((widget.product['discount'] ?? 0) > 0)
+                      if ((widget.product.discountPercentage ?? 0) > 0)
                         Positioned(
                           top: 16,
                           right: 16,
@@ -81,7 +80,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                               borderRadius: BorderRadius.circular(4),
                             ),
                             child: Text(
-                              '${widget.product['discount']}% off',
+                              '${widget.product.discountPercentage}% off',
                               style: const TextStyle(
                                 color: Colors.pink,
                                 fontWeight: FontWeight.bold,
@@ -126,7 +125,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                           children: [
                             Expanded(
                               child: Text(
-                                widget.product['name'] ?? 'Apple Watch Series 10',
+                                widget.product.name ?? 'no data',
                                 style: const TextStyle(
                                   fontSize: 22,
                                   fontWeight: FontWeight.bold,
@@ -152,16 +151,16 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                         Row(
                           children: [
                             Text(
-                              '\$${widget.product['price']?.toStringAsFixed(2) ?? '379.99'}',
+                              '\$${widget.product.currentPrice?.toStringAsFixed(2) ?? '379.99'}',
                               style: const TextStyle(
                                 fontSize: 22,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
                             const SizedBox(width: 12),
-                            if ((widget.product['discount'] ?? 0) > 0)
+                            if ((widget.product.discountPercentage ?? 0) > 0)
                               Text(
-                                '\$${widget.product['originalPrice']?.toStringAsFixed(2) ?? '419.99'}',
+                                '\$${widget.product.originalPrice?.toStringAsFixed(2) ?? '419.99'}',
                                 style: TextStyle(
                                   color: Colors.grey[500],
                                   decoration: TextDecoration.lineThrough,
@@ -177,14 +176,14 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                           children: [
                             const Icon(Icons.star, color: Colors.amber, size: 20),
                             Text(
-                              ' ${widget.product['rating']?.toString() ?? '4.9'}',
+                              ' ${widget.product.rating?.toString() ?? '4.9'}',
                               style: const TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 16,
                               ),
                             ),
                             Text(
-                              ' (${widget.product['reviews']?.toString() ?? '263'})',
+                              ' (${widget.product.reviewCount?.toString() ?? '263'})',
                               style: TextStyle(
                                 color: Colors.grey[600],
                                 fontSize: 16,
@@ -235,18 +234,18 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                         ),
                         
                         // Size Section (if applicable)
-                        if (widget.product['sizes'] != null) ...[
-                          const SizedBox(height: 24),
-                          const Text(
-                            'Size',
-                            style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          const SizedBox(height: 12),
-                          // Size options would go here
-                        ],
+                        // if (widget.product!= null) ...[
+                        //   const SizedBox(height: 24),
+                        //   const Text(
+                        //     'Size',
+                        //     style: TextStyle(
+                        //       fontSize: 18,
+                        //       fontWeight: FontWeight.bold,
+                        //     ),
+                        //   ),
+                        //   const SizedBox(height: 12),
+                        //   // Size options would go here
+                        // ],
                         
                         // Description Section
                         const SizedBox(height: 24),
@@ -259,7 +258,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                         ),
                         const SizedBox(height: 12),
                         Text(
-                          widget.product['description'] ?? 
+                          // widget.product['des'] ?? 
                           'Series 10 is a major milestone for Apple Watch. It features our biggest and most advanced display yet. It delivers more information onscreen than ever before.',
                           style: TextStyle(
                             fontSize: 16,
@@ -485,40 +484,3 @@ class DummyCheckoutPage extends StatelessWidget {
     );
   }
 }
-
-// Example usage of the product details page
-class ProductDetailExample extends StatelessWidget {
-  const ProductDetailExample({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    // Sample product data
-    final product = {
-      'id': 'apple-watch-series-10',
-      'name': 'Apple Watch Series 10',
-      'price': 379.99,
-      'originalPrice': 419.99,
-      'discount': 10,
-      'icon': Icons.watch,
-      'rating': 4.9,
-      'reviews': 263,
-      'description': 'Series 10 is a major milestone for Apple Watch. It features our biggest and most advanced display yet. It delivers more information onscreen than ever before. The battery lasts longer than previous generations, and it has enhanced fitness tracking capabilities.',
-      'category': 'Electronics',
-    };
-
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.indigo,
-          primary: Colors.indigo,
-          background: Colors.white,
-        ),
-        useMaterial3: true,
-        fontFamily: 'Poppins',
-      ),
-      home: ProductDetailsPage(product: product),
-    );
-  }
-}
-

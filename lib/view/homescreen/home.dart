@@ -6,15 +6,19 @@ import 'package:onlineshop/view/homescreen/widgets/offer.dart';
 import 'package:onlineshop/view/homescreen/widgets/popular.dart';
 import 'package:onlineshop/view/homescreen/widgets/product.dart';
 import 'package:onlineshop/view/homescreen/widgets/recommended.dart';
-
-
+import 'package:onlineshop/view/homescreen/widgets/searchbar.dart';
+import 'package:onlineshop/viewmodel/provider.dart';
+import 'package:provider/provider.dart';
 
 // Home Screen with categories and promotion banner
 class HomeScreen extends StatelessWidget {
    HomeScreen({super.key});
 
+   TextEditingController searchController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
+   final provider = Provider.of<ShoppingProvider>(context,listen: false);
     return Scaffold(
       appBar: AppBar(
         title:  Text('Home'),
@@ -38,22 +42,12 @@ class HomeScreen extends StatelessWidget {
           
                 padding: EdgeInsets.all(16.0),
                 child: DeliveryAddressWidget(),
-              ),
-              Padding(
-                padding:  EdgeInsets.symmetric(horizontal: 16.0),
-                child: TextField(
-                  decoration: InputDecoration(
-                    hintText: 'Search products...',
-                    prefixIcon:  Icon(Icons.search),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
-                      borderSide: BorderSide.none,
-                    ),
-                    filled: true,
-                    fillColor: Colors.grey[200],
-                  ),
-                ),
-              ),
+              ),   
+            SizedBox(height: 10,),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: SearchBarWithResults(controller: searchController),
+            ),
                SizedBox(height: 20),
                PromotionBanner(),
                SizedBox(height: 20),
@@ -117,3 +111,4 @@ SizedBox(height: 20),
     );
   }
 }
+
