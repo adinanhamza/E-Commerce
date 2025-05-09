@@ -16,7 +16,7 @@ class CartScreen extends StatelessWidget {
           Expanded(
             child: ListView(
               padding: const EdgeInsets.all(16),
-              children: const [
+              children: const [ 
                 CartItem(
                   image: 'perfume.png',
                   name: 'Essence Perfume 350ml',

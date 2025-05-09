@@ -5,7 +5,7 @@ import 'package:onlineshop/model/model.dart';
 import 'package:onlineshop/services/service.dart';
 
 class ShoppingProvider extends ChangeNotifier{
-final ShoppingService service = ShoppingService();
+final ProductService service = ProductService();
  List <ProductModel> productList = [];
  List <ProductModel>searchedProducts = [];
   bool isSearching= false;

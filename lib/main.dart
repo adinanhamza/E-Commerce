@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:onlineshop/firebase_options.dart';
 import 'package:onlineshop/view/bottombar/bottom.dart';
 import 'package:onlineshop/view/homescreen/home.dart';
+import 'package:onlineshop/view/login&signup/login.dart';
+import 'package:onlineshop/view/login&signup/signup.dart';
 import 'package:onlineshop/viewmodel/provider.dart';
 import 'package:provider/provider.dart';
 
@@ -41,7 +43,7 @@ class ECommerceApp extends StatelessWidget {
           useMaterial3: true,
           fontFamily: 'Poppins',
         ),
-        home: BottomScreen(),
+        home: AuthScreen(),
       ),
     );
   }

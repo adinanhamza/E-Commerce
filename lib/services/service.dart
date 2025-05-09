@@ -2,7 +2,7 @@ import 'dart:developer';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:onlineshop/model/model.dart';
 
-class ShoppingService{
+class ProductService{
   final CollectionReference firebaseData = FirebaseFirestore.instance.collection('products');
 
   Future<List<ProductModel>>getAllProducts()async{

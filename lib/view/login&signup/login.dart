@@ -10,8 +10,14 @@ class AuthScreen extends StatefulWidget {
 }
 
 class _AuthScreenState extends State<AuthScreen> {
- final bool _isLoading = false;
+  final bool _isLoading = false;
+  final _phoneController = TextEditingController();
 
+  @override
+  void dispose() {
+    _phoneController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -26,9 +32,9 @@ class _AuthScreenState extends State<AuthScreen> {
               const SizedBox(height: 60),
 
               // Logo with Hero Animation
-              Hero(
+              const Hero(
                 tag: 'appLogo',
-                child: const CircleAvatar(
+                child: CircleAvatar(
                   radius: 50,
                   backgroundImage: AssetImage(
                     'assets/applogo.jpg',
@@ -56,10 +62,17 @@ class _AuthScreenState extends State<AuthScreen> {
               ),
               const SizedBox(height: 40),
 
+              // Google Sign In Option - Main Authentication Method
               ElevatedButton.icon(
-                onPressed:(){Navigator.push(context, MaterialPageRoute(builder: (context)=> BottomScreen()));},
+                onPressed: () {
+                  // Add Google sign-in logic
+                  Navigator.push(
+                    context, 
+                    MaterialPageRoute(builder: (context) => BottomScreen())
+                  );
+                },
                 icon: Image.network(
-                  'https://th.bing.com/th/id/OIP.Kg2FF2wpIK_HLyo8Q56ycAHaFj?rs=1&pid=ImgDetMain',
+                  'assets/google-logo-transparent-official-removebg-preview.png',
                   height: 24,
                 ),
                 label: _isLoading
@@ -71,12 +84,11 @@ class _AuthScreenState extends State<AuthScreen> {
                           color: Colors.black,
                         ),
                       )
-                    : const Text('Sign in with Google'),
+                    : const Text('Sign in with Google',style: TextStyle(color: Colors.white),),
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.white,
-                  foregroundColor: Colors.black87,
+                  backgroundColor: Colors.black,
+                  foregroundColor: Colors.blue,
                   minimumSize: const Size(double.infinity, 50),
-                  side: const BorderSide(color: Colors.black12),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12),
                   ),
@@ -84,7 +96,7 @@ class _AuthScreenState extends State<AuthScreen> {
                 ),
               ),
               const SizedBox(height: 24),
-
+              
               Row(
                 children: const [
                   Expanded(child: Divider(thickness: 1, color: Colors.black26)),
@@ -100,7 +112,9 @@ class _AuthScreenState extends State<AuthScreen> {
               ),
               const SizedBox(height: 24),
 
+              // OTP Section
               TextField(
+                controller: _phoneController,
                 keyboardType: TextInputType.phone,
                 decoration: InputDecoration(
                   hintText: 'Enter phone number',
@@ -114,10 +128,21 @@ class _AuthScreenState extends State<AuthScreen> {
                   ),
                 ),
               ),
-              const SizedBox(height: 20),
-
+              const SizedBox(height: 16),
+              
               ElevatedButton(
-                onPressed: (){},
+                onPressed: () {
+                  // Add OTP logic
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.black,
+                  foregroundColor: Colors.white,
+                  minimumSize: const Size(double.infinity, 50),
+                  side: const BorderSide(color: Colors.black12),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                ),
                 child: _isLoading
                     ? const SizedBox(
                         width: 24,
@@ -128,46 +153,36 @@ class _AuthScreenState extends State<AuthScreen> {
                         ),
                       )
                     : const Text('Get OTP'),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.blueAccent,
-                  foregroundColor: Colors.white,
-                  minimumSize: const Size(double.infinity, 50),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                ),
               ),
 
               const SizedBox(height: 20),
 
-// Sign Up Row
-Row(
-  mainAxisAlignment: MainAxisAlignment.center,
-  children: [
-    const Text(
-      "Don't have an account?",
-      style: TextStyle(color: Colors.black54),
-    ),
-   TextButton(
-  onPressed: () {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => const SignUpScreen()),
-    );
-  },
-  child: const Text(
-    "Sign Up",
-    style: TextStyle(
-      color: Colors.blueAccent,
-      fontWeight: FontWeight.bold,
-    ),
-  ),
-),
-
-  ],
-),
-
-const SizedBox(height: 50),
+              // Sign Up Row
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text(
+                    "Don't have an account?",
+                    style: TextStyle(color: Colors.black54),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const SignUpScreen()),
+                      );
+                    },
+                    child: const Text(
+                      "Sign Up",
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 30),
             ],
           ),
         ),
