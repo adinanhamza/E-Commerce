@@ -46,7 +46,7 @@ class SearchBarWithResults extends StatelessWidget {
                       itemBuilder: (context, index) {
                         final product = provider.searchedProducts[index];
                         return ListTile(
-                          leading: Image.network(product.networkImage, width: 50),
+                          leading: SizedBox(child: Image.network(product.networkImage, width: 50,fit: BoxFit.cover,)),
                           title: Text(product.name),
                           subtitle: Text('\$${product.currentPrice.toStringAsFixed(2)}'),
                         );

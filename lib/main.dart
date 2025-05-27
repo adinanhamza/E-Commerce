@@ -1,16 +1,10 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:onlineshop/firebase_options.dart';
-import 'package:onlineshop/view/bottombar/bottom.dart';
-import 'package:onlineshop/view/homescreen/home.dart';
 import 'package:onlineshop/view/login&signup/login.dart';
-import 'package:onlineshop/view/login&signup/signup.dart';
+import 'package:onlineshop/viewmodel/authpro.dart';
 import 'package:onlineshop/viewmodel/provider.dart';
 import 'package:provider/provider.dart';
-
-
-
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -29,7 +23,10 @@ class ECommerceApp extends StatelessWidget {
   
     MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (context) => ShoppingProvider(),)
+        ChangeNotifierProvider(create: (context) => ShoppingProvider(),
+        
+        ),
+        ChangeNotifierProvider(create: (context) => Authpro(),),
       ],
       child: MaterialApp(
         title: 'E-Commerce App',
