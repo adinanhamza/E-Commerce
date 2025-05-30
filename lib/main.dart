@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:onlineshop/firebase_options.dart';
 import 'package:onlineshop/view/login&signup/login.dart';
+import 'package:onlineshop/view/splash/splash.dart';
 import 'package:onlineshop/viewmodel/authpro.dart';
 import 'package:onlineshop/viewmodel/provider.dart';
 import 'package:provider/provider.dart';
@@ -26,7 +27,7 @@ class ECommerceApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => ShoppingProvider(),
         
         ),
-        ChangeNotifierProvider(create: (context) => Authpro(),),
+        ChangeNotifierProvider(create: (context) => AuthProvider(),),
       ],
       child: MaterialApp(
         title: 'E-Commerce App',
@@ -40,7 +41,7 @@ class ECommerceApp extends StatelessWidget {
           useMaterial3: true,
           fontFamily: 'Poppins',
         ),
-        home: AuthScreen(),
+        home: Splash(),
       ),
     );
   }

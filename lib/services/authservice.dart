@@ -39,6 +39,17 @@ class AuthService {
     }
   }
 
+  Future<void>signOutFromGoogle()async{
+    try {
+      await _auth.signOut();
+      await  _googleSignIn.signOut;
+      log('google signOut success : ) ');
+    }on FirebaseAuthException catch (e) {
+      log('error in google SignOut ${e.message}');
+      throw Exception('failed google SignOut');
+    }
+  }
+
   User? getCurrentUser() {
     return _auth.currentUser;
   }
@@ -58,7 +69,7 @@ class AuthService {
       await _auth.currentUser?.sendEmailVerification();
       log('user registered! Email verification sent!');
     } on FirebaseAuthException catch (e) {
-      log('error in register ${e.message}');
+      throw Exception('error in register ${e.message}');
     }
   }
 
@@ -67,15 +78,27 @@ class AuthService {
       await Future.delayed(Duration(seconds: 2));
       UserCredential userCredential = await _auth.signInWithEmailAndPassword(email: email, password: password);
       User? user = userCredential.user;
-      if(user != null){
-             log(
-          'user loged in with email verified ! ${FirebaseAuth.instance.currentUser?.email}',
-        );
+     if (user != null) {
+      if (user.emailVerified) {
+        log('User logged in: ${user.email}');
+      } else {
+        throw Exception('Email not verified. Please verify your email.');
       }
-    }on FirebaseAuthException catch (e) {
-      log('user loged failed ${e.message}}');
+    } else {
+      throw Exception('No user returned from signIn.');
     }
+  } on FirebaseAuthException catch (e) {
+    throw Exception('User login failed: ${e.message}');
   }
 
-  Future<void>logOutEmail()
+  }
+
+  Future<void>logOutEmail()async{
+    try {
+      await _auth.signOut();
+        log('user logout successfully : )');
+    }on FirebaseException catch (e) {
+        log('failed user logout ${e.message}');
+    }
+  }
 }

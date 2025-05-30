@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:onlineshop/viewmodel/authpro.dart';
+import 'package:provider/provider.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -75,7 +77,12 @@ class ProfileScreen extends StatelessWidget {
           ),
           const SizedBox(height: 32),
           OutlinedButton.icon(
-            onPressed: () {},
+            onPressed: () async{
+           await    context.read<AuthProvider>().logout();
+           Navigator.canPop(context);
+           await 
+              
+            },
             icon: const Icon(Icons.logout),
             label: const Text('Logout'),
             style: OutlinedButton.styleFrom(

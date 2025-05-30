@@ -2,9 +2,11 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:onlineshop/services/authservice.dart';
 import 'package:onlineshop/view/bottombar/bottom.dart';
+import 'package:onlineshop/view/login&signup/google_auth.dart';
 import 'package:onlineshop/view/login&signup/signup.dart';
 import 'package:onlineshop/viewmodel/authpro.dart';
 import 'package:provider/provider.dart';
+
 
 class AuthScreen extends StatefulWidget {
   const AuthScreen({super.key});
@@ -14,21 +16,11 @@ class AuthScreen extends StatefulWidget {
 }
 
 class _AuthScreenState extends State<AuthScreen> {
-  final auth = AuthService();
-  final bool _isLoading = false;
-  final _emailController = TextEditingController();
-  final _passwordController = TextEditingController();
-  bool _isPasswordVisible = false;
 
-  @override
-  void dispose() {
-    _emailController.dispose();
-    _passwordController.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
+    final pro = Provider.of<AuthProvider>(context);
     return Scaffold(
       // Gradient Background
       body: Container(
@@ -143,7 +135,7 @@ class _AuthScreenState extends State<AuthScreen> {
                                 color: Colors.white.withOpacity(0.15),
                               ),
                               child: TextField(
-                                controller: _emailController,
+                                controller:pro.emailController,
                                 keyboardType: TextInputType.emailAddress,
                                 style: const TextStyle(color: Colors.white),
                                 decoration: const InputDecoration(
@@ -190,8 +182,8 @@ class _AuthScreenState extends State<AuthScreen> {
                                 color: Colors.white.withOpacity(0.15),
                               ),
                               child: TextField(
-                                controller: _passwordController,
-                                obscureText: !_isPasswordVisible,
+                                controller: pro.passwordController,
+                                obscureText: !pro.isPasswordVisible,
                                 style: const TextStyle(color: Colors.white),
                                 decoration: InputDecoration(
                                   hintText: 'Enter your password',
@@ -206,16 +198,14 @@ class _AuthScreenState extends State<AuthScreen> {
                                   ),
                                   suffixIcon: IconButton(
                                     icon: Icon(
-                                      _isPasswordVisible
+                                      pro.isPasswordVisible
                                           ? Icons.visibility_outlined
                                           : Icons.visibility_off_outlined,
                                       color: Colors.white70,
                                       size: 20,
                                     ),
                                     onPressed: () {
-                                      setState(() {
-                                        _isPasswordVisible = !_isPasswordVisible;
-                                      });
+                                     pro.togglePasswordvisi();
                                     },
                                   ),
                                   border: InputBorder.none,
@@ -256,10 +246,27 @@ class _AuthScreenState extends State<AuthScreen> {
                           width: double.infinity,
                           height: 52,
                           child: ElevatedButton(
-                            onPressed: () {
-                              // Add email/password sign in logic
-                            },
-                            style: ElevatedButton.styleFrom(
+                           onPressed: () async {
+  bool success = await pro.signIn();
+
+  if (success && pro.getCurrentUser() != null) {
+    String? email = pro.getCurrentUser()?.email;
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text('Signed in user: ${email ?? "No email"}')),
+    );
+
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => BottomScreen()),
+    );
+  } else {
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content: Text("Sign-In Failed")),
+    );
+  }
+}
+,            style: ElevatedButton.styleFrom(
                               backgroundColor: Colors.white.withOpacity(0.3),
                               foregroundColor: Colors.white,
                               elevation: 0,
@@ -267,7 +274,7 @@ class _AuthScreenState extends State<AuthScreen> {
                                 borderRadius: BorderRadius.circular(12),
                               ),
                             ),
-                            child: _isLoading
+                            child: pro.isLoading
                                 ? const SizedBox(
                                     width: 20,
                                     height: 20,
@@ -357,28 +364,7 @@ class _AuthScreenState extends State<AuthScreen> {
                             // Google Sign In
                             GestureDetector(
                               onTap: () async {
-                                final authprovider =
-                                    Provider.of<Authpro>(context, listen: false);
-                                final user = await authprovider.signInGoogle();
-
-                                if (user != null) {
-                                  String? email = authprovider.getCurrentUserEmail();
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(
-                                        content:
-                                            Text('Logged in user: ${email ?? "Not logged in"}')),
-                                  );
-
-                                  Navigator.pushReplacement(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => BottomScreen()),
-                                  );
-                                } else {
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    const SnackBar(content: Text("Sign-In Failed")),
-                                  );
-                                }
+                              Navigator.of(context).push(MaterialPageRoute(builder: (context)=> GoogleLoginScreen()));
                               },
                               child: Container(
                                 width: 44,
